@@ -1,0 +1,39 @@
+﻿.project-card {
+    transition: transform 0.3s;
+}
+
+    .project-card:hover {
+        transform: scale(1.05);
+    }
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.profile-pic {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .navbar, .container, .projects-container, .icon-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    form {
+        width: 90%;
+    }
+}
+
+.icon-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .icon-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
