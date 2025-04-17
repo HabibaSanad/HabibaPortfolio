@@ -1,0 +1,197 @@
+﻿@{
+    ViewData["Title"] = "Projects";
+}
+@{
+    Layout = "_Layout";
+}
+
+<h1>My Projects</h1>
+
+<!-- Search Field -->
+<div class="search-bar">
+    <input type="text" id="search-input" placeholder="Search for projects...">
+    <div id="suggestions" class="suggestions"></div> <!-- Suggestions Element -->
+</div>
+
+<div class="filter-bar">
+    <button onclick="filterProjects('all')">All</button>
+    <button onclick="filterProjects('web-development')">Web Development</button>
+    <button onclick="filterProjects('database')">Database</button>
+</div>
+
+<!-- Start of Project Section -->
+<div class="projects">
+    <div class="project" data-category="web-development">
+        <h3>Online Bookstore</h3>
+        <p>A web application for browsing and purchasing books online.</p>
+        <span>Technologies: HTML, CSS, JavaScript, ASP.NET</span>
+    </div>
+    <div class="project" data-category="database">
+        <h3>Student Management System</h3>
+        <p>A system to manage student information and course enrollments.</p>
+        <span>Technologies: SQL Server, C#, Entity Framework</span>
+    </div>
+    <div class="project" data-category="web-development" onclick="window.open('https://github.com/HabibaAbdelmalik/Portfolio', '_blank')">
+        <!-- Portfolio Website Project Link -->
+        <h3>Portfolio Website</h3>
+        <p>A personal website to showcase projects and skills.</p>
+        <span>Technologies: HTML, CSS, Bootstrap, JavaScript</span>
+    </div>
+    <div class="project" data-category="all">
+        <h3>Inventory Management</h3>
+        <p>An application for tracking inventory levels, orders, and deliveries.</p>
+        <span>Technologies: C#, SQL Server, Windows Forms</span>
+    </div>
+    <div class="project" data-category="web-development">
+        <h3>Social Media App</h3>
+        <p>A platform for connecting users and sharing content.</p>
+        <span>Technologies: React, Node.js, MongoDB</span>
+    </div>
+    <div class="project" data-category="database">
+        <h3>Library Management System</h3>
+        <p>A system for managing library resources and transactions.</p>
+        <span>Technologies: SQL Server, C#, ASP.NET MVC</span>
+    </div>
+    <div class="project" data-category="all">
+        <h3>E-commerce Website</h3>
+        <p>A complete online store for selling products.</p>
+        <span>Technologies: PHP, MySQL, HTML, CSS</span>
+    </div>
+    <div class="project" data-category="web-development">
+        <h3>Blog Platform</h3>
+        <p>A web application for creating and sharing blog posts.</p>
+        <span>Technologies: Django, Python, SQLite</span>
+    </div>
+</div>
+<!-- End of Project Section -->
+
+<div class="testimonial-section">
+    <h2>Testimonials</h2>
+    <p>"Amazing developer, highly recommend!" - Client A</p>
+    <p>"Delivered everything on time and with great quality!" - Client B</p>
+</div>
+
+<style>
+    /* Styling for the search bar and suggestions */
+    .search-bar {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    #search-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .suggestions {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        position: absolute;
+        z-index: 1000;
+        background-color: white;
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .suggestion-item {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+        .suggestion-item:hover {
+            background-color: #e6e6fa;
+        }
+
+    .filter-bar {
+        margin-bottom: 20px;
+    }
+
+    .projects {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding: 20px;
+        background-color: #f0f8ff;
+    }
+
+    .project {
+        width: 250px;
+        margin: 15px;
+        text-align: center;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        transition: transform 0.3s; /* Hover effect */
+        cursor: pointer;
+    }
+
+        .project:hover {
+            transform: scale(1.05); /* Enlarge project on hover */
+        }
+
+        .project h3 {
+            color: #4B0082;
+            margin-top: 10px;
+        }
+
+        .project p {
+            color: #555;
+        }
+
+    .testimonial-section {
+        margin-top: 40px;
+        text-align: center;
+    }
+</style>
+
+<script>
+    const projects = [
+        "Online Bookstore",
+        "Student Management System",
+        "Portfolio Website",
+        "Inventory Management",
+        "Social Media App",
+        "Library Management System",
+        "E-commerce Website",
+        "Blog Platform"
+    ]; // List of projects
+
+    const searchInput = document.getElementById('search-input');
+    const suggestionsDiv = document.getElementById('suggestions');
+
+    searchInput.addEventListener('input', function () {
+        const query = this.value.toLowerCase();
+        suggestionsDiv.innerHTML = ''; // Clear previous suggestions
+
+        if (query) {
+            const filteredProjects = projects.filter(project => project.toLowerCase().includes(query));
+            filteredProjects.forEach(project => {
+                const suggestionItem = document.createElement('div');
+                suggestionItem.classList.add('suggestion-item');
+                suggestionItem.textContent = project;
+                suggestionItem.addEventListener('click', function () {
+                    searchInput.value = project; // Set input value on click
+                    suggestionsDiv.innerHTML = ''; // Clear suggestions after selection
+                    if (project === "Portfolio Website") {
+                        window.open('https://github.com/HabibaAbdelmalik/Portfolio', '_blank'); // Open link directly
+                    }
+                });
+                suggestionsDiv.appendChild(suggestionItem);
+            });
+        }
+    });
+
+    function filterProjects(category) {
+        document.querySelectorAll('.project').forEach(project => {
+            if (category === 'all' || project.dataset.category === category) {
+                project.style.display = 'block';
+            } else {
+                project.style.display = 'none';
+            }
+        });
+    }
+</script>

@@ -1,0 +1,192 @@
+﻿@{
+    ViewData["Title"] = "Welcome to My Portfolio";
+}
+@{
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let message = document.getElementById('message').value;
+        if (name === '' || email === '' || message === '') {
+            e.preventDefault();
+            alert('Please fill in all fields.');
+        } else {
+            alert('Form submitted successfully!');
+        }
+    });
+</script>
+
+<div class="container">
+    <div class="header d-flex justify-content-between align-items-center"></div>
+
+    <div class="welcome-message text-center mt-4">
+        <h1>Welcome to My Portfolio</h1>
+        <p>I am a .NET Developer passionate about creating dynamic web applications.</p>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <h3><i class="fas fa-code"></i> Skills</h3>
+                <p>Explore my technical skills and tools that I am proficient in as a developer.</p>
+                <div class="button-container">
+                    <a href="@Url.Action("GetSkills", "Home")" class="btn btn-primary">View Skills</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <h3><i class="fas fa-project-diagram"></i> Projects</h3>
+                <p>Check out some of the projects I've worked on and contributed to.</p>
+                <div class="button-container">
+                    <a href="@Url.Action("GetProjects", "Home")" class="btn btn-primary" style="margin-top: 20px;">View Projects</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <h3><i class="fas fa-envelope"></i> Contact Me</h3>
+                <p>Feel free to reach out for any inquiries or collaboration.</p>
+                <div class="button-container">
+                    <a href="@Url.Action("ContactMe", "Home")" class="btn btn-primary" style="margin-top: 20px;">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>
+        Connect with me:
+        <a href="https://www.linkedin.com/in/habiba-sanad-689149244?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/HabibaAbdelmalik/portofolio.git" target="_blank"><i class="fab fa-github"></i></a>
+    </p>
+</footer>
+
+<script>
+    function filterProjects(category) {
+        let projects = document.querySelectorAll('.project-box');
+        projects.forEach(function (project) {
+            if (category === 'all' || project.classList.contains(category)) {
+                project.style.display = '';
+            } else {
+                project.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+<style>
+    .container {
+        padding: 50px;
+        background-color: #e6e6fa;
+    }
+
+    .welcome-message h1, .welcome-message p {
+        color: #333;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+        width: 100%;
+        min-height: 350px;
+        transition: transform 0.3s ease;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            font-size: 24px;
+            color: #4b0082;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .icon-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+        .icon-container i {
+            font-size: 24px;
+            color: #4b0082;
+            margin: 0 10px;
+        }
+
+    .btn-primary {
+        background-color: #4b0082;
+        border-color: #4b0082;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+        .btn-primary:hover {
+            background-color: #3d0069;
+        }
+
+    .btn-outline-dark {
+        margin-left: 10px;
+        border: 1px solid #4b0082;
+        color: #4b0082;
+    }
+
+        .btn-outline-dark:hover {
+            background-color: #4b0082;
+            color: white;
+        }
+</style>

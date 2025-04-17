@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "My Skills";
+}
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+
+    <h2>My Skills</h2>
+    <p>As a .NET Developer, I am proficient in the following technologies:</p>
+
+    <div class="row">
+        <div class="col-md-3 skill-card">
+            <h3>ASP.NET</h3>
+            <p>Building web applications using ASP.NET Core.</p>
+        </div>
+
+        <div class="col-md-3 skill-card">
+            <h3>C#</h3>
+            <p>Developing applications with C# programming language.</p>
+        </div>
+
+        <div class="col-md-3 skill-card">
+            <h3>Entity Framework</h3>
+            <p>Using EF for data access and ORM.</p>
+        </div>
+
+        <div class="col-md-3 skill-card">
+            <h3>HTML/CSS</h3>
+            <p>Creating responsive and accessible web interfaces.</p>
+        </div>
+
+        <div class="col-md-3 skill-card">
+            <h3>JavaScript</h3>
+            <p>Enhancing user experience with dynamic scripts.</p>
+        </div>
+
+        <div class="col-md-3 skill-card">
+            <h3>SQL Server</h3>
+            <p>Database management and data manipulation.</p>
+        </div>
+
+        <div class="col-md-3 skill-card">
+            <h3>RESTful APIs</h3>
+            <p>Designing and implementing RESTful services.</p>
+        </div>
+
+        <div class="col-md-3 skill-card">
+            <h3>Azure</h3>
+            <p>Utilizing cloud services for application hosting.</p>
+        </div>
+    </div>
+</div>
+<div class="skill-item">
+    
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 90%;">90%</div>
+    </div>
+</div>
+
+
+<style>
+    .container {
+        text-align: center;
+        padding: 50px;
+        background-color: #e6e6fa; 
+    }
+
+    h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: #4B0082;
+    }
+
+    p {
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: space-around;
+    }
+
+    .skill-card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+        width: 22%; 
+    }
+
+        .skill-card h3 {
+            font-size: 20px;
+            color: #4B0082; 
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            font-size: 14px;
+            color: #666;
+        }
+</style>
